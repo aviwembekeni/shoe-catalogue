@@ -37,8 +37,8 @@ function ShoeCatalogue(){
         return shoesCopy;
       }
 
-      function filterShoesList(shoesArr, brand, color, size){
-        var newArray = shoesArr.filter(function (shoe) {
+      function filterShoesList(brand, color, size){
+        var newArray = shoes.filter(function (shoe) {
           return shoe.brand == brand &&
                  shoe.color == color &&
                  shoe.size == size;
@@ -47,8 +47,14 @@ function ShoeCatalogue(){
         return newArray
       }
 
+      function addSingleShoe(brand, color, size, price, in_stock){
+        var shoe = { color : color, brand : brand, size: size, price : price,  in_stock : in_stock};
+        shoes.push(shoe);
+      }
+
   return {
     getShoes : checkShoes,
-    filterShoes : filterShoesList
+    filterShoes : filterShoesList,
+    addShoe : addSingleShoe
   }
 }
