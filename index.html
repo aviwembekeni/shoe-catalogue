@@ -11,120 +11,159 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/x-template" class="searchResultsTemplate">
         <span> We have <b>{{numberInStock}}</b> size <b>{{size}} {{color}}  {{brand}}</b> shoes available</span>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect addToBasketButton" style="background-color:#1AB365; color:white">
+          Add To Basket
+        </button>
   </script>
+  <script type="text/x-template" class="shoppingBasketTemplate">
+    {{#each shoes}}
+      <tr>
+        <td>{{brand}}</td>
+        <td>{{color}}</td>
+        <td>{{size}}</td>
+        <td>{{stock}}</td>
+        <td>{{price}}</td>
+        <td>{{total}}</td>
+    {{/each}}
+      </tr>
+</script>
   </head>
   <body>
     <div class="wrapper">
       <h3>Shoe Catalogue</h3>
-
       <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col brandFilterDiv">
-          <form>
-            Brand:
-            <select class="brandFilter">
-              <option value="">Select</option>
-              <option value="Prada">Prada</option>
-              <option value="Tommy Helfiger">Tommy Helfiger</option>
-              <option value="Lacoste">Lacoste</option>
-              <option value="Kurt Geiger">Kurt Geiger</option>
-            </select>
-          </form>
+        <div class="mdl-cell mdl-cell--6-col">
+
+            <h4>Search for a shoe</h4>
+
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col brandFilterDiv">
+                <form>
+                  Brand:
+                  <select class="brandFilter">
+                    <option value="">Select</option>
+                    <option value="Prada">Prada</option>
+                    <option value="Tommy Helfiger">Tommy Helfiger</option>
+                    <option value="Lacoste">Lacoste</option>
+                    <option value="Kurt Geiger">Kurt Geiger</option>
+                  </select>
+                </form>
+
+              </div>
+              <div class="mdl-cell mdl-cell--4-col colorFilterDiv">
+                <form>
+                  Color:
+                  <select class="colorFilter">
+                    <option value="">Select</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="brown">brown</option>
+                  </select>
+                </form>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col sizeFilterDiv">
+                <form>
+                  Size:
+                  <select class="sizeFilter">
+                    <option value="">Select</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                </form>
+
+
+              </div>
+              <div class="mdl-cell mdl-cell--4-col searchButtonDiv">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect searchButton" style="background-color:#1AB365; color:white">
+                  Search
+                </button>
+            </div>
+            </div>
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--12-col shoeResultsDisplay">
+
+              </div>
+
+            </div>
+            <h4>Add new shoe</h4>
+            <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col brandDiv">
+                <form>
+                  Brand:
+                  <select class="brand">
+                    <option value="">Select</option>
+                    <option value="Prada">Prada</option>
+                    <option value="Tommy Helfiger">Tommy Helfiger</option>
+                    <option value="Lacoste">Lacoste</option>
+                    <option value="Kurt Geiger">Kurt Geiger</option>
+                  </select>
+                </form>
+
+              </div>
+              <div class="mdl-cell mdl-cell--4-col colorDiv">
+                <form>
+                  Color:
+                  <select class="color">
+                    <option value="">Select</option>
+                    <option value="white">White</option>
+                    <option value="black">Black</option>
+                    <option value="brown">brown</option>
+                  </select>
+                </form>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col sizeDiv">
+                <form>
+                  Size:
+                  <select class="size">
+                    <option value="">Select</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                  </select>
+                </form>
+
+
+              </div>
+              <div class="mdl-cell mdl-cell--4-col priceDiv">
+                <form> Price :
+                <input class="price" type="number" name="price" min="0" max="5000">
+                </form>
+
+
+              </div>
+              <div class="mdl-cell mdl-cell--4-col inStock">
+                <form> Stock :
+                <input class="noOfStock" type="number" name="in_stock" min="0" max="5000">
+                </form>
+
+
+              </div>
+              <div class="mdl-cell mdl-cell--6-col addButtonDiv">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect addButton" style="background-color:#1AB365; color:white">
+                  Add
+                </button>
+            </div>
+
+          </div>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col">
+
+          <table>
+            <tr>
+              <th>Brand</th>
+              <th>Color</th>
+              <th>Size</th>
+              <th>Number</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+            <tbody class="shoppingBasketDisplay">
+
+            </tbody>
+          </table>
 
         </div>
-        <div class="mdl-cell mdl-cell--3-col colorFilterDiv">
-          <form>
-            Color:
-            <select class="colorFilter">
-              <option value="">Select</option>
-              <option value="white">White</option>
-              <option value="black">Black</option>
-              <option value="brown">brown</option>
-            </select>
-          </form>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col sizeFilterDiv">
-          <form>
-            Size:
-            <select class="sizeFilter">
-              <option value="">Select</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-            </select>
-          </form>
-
-
-        </div>
-        <div class="mdl-cell mdl-cell--3-col searchButtonDiv">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect searchButton" style="background-color:#1AB365; color:white">
-            Search
-          </button>
-      </div>
-      </div>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col shoeResultsDisplay">
-
-        </div>
-
-      </div>
-      <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--2-col brandDiv">
-          <form>
-            Brand:
-            <select class="brand">
-              <option value="">Select</option>
-              <option value="Prada">Prada</option>
-              <option value="Tommy Helfiger">Tommy Helfiger</option>
-              <option value="Lacoste">Lacoste</option>
-              <option value="Kurt Geiger">Kurt Geiger</option>
-            </select>
-          </form>
-
-        </div>
-        <div class="mdl-cell mdl-cell--2-col colorDiv">
-          <form>
-            Color:
-            <select class="color">
-              <option value="">Select</option>
-              <option value="white">White</option>
-              <option value="black">Black</option>
-              <option value="brown">brown</option>
-            </select>
-          </form>
-        </div>
-        <div class="mdl-cell mdl-cell--2-col sizeDiv">
-          <form>
-            Size:
-            <select class="size">
-              <option value="">Select</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
-            </select>
-          </form>
-
-
-        </div>
-        <div class="mdl-cell mdl-cell--2-col priceDiv">
-          <form> Price :
-          <input class="price" type="number" name="price" min="0" max="5000">
-          </form>
-
-
-        </div>
-        <div class="mdl-cell mdl-cell--2-col inStock">
-          <form> Stock :
-          <input class="noOfStock" type="number" name="in_stock" min="0" max="5000">
-          </form>
-
-
-        </div>
-        <div class="mdl-cell mdl-cell--2-col addButtonDiv">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect addButton" style="background-color:#1AB365; color:white">
-            Add
-          </button>
-      </div>
-
       </div>
 
     </div>

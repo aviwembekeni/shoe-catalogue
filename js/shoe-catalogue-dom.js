@@ -11,11 +11,19 @@ var priceSelect = document.querySelector(".price");
 var stockSelect = document.querySelector(".noOfStock");
 var addButton = document.querySelector(".addButton");
 
+var shoppingBasketDisplayElem = document.querySelector(".shoppingBasketDisplay");
+
 var searchResultsTemplateSource = document.querySelector(".searchResultsTemplate").innerHTML;
 var searchResultsTemplate = Handlebars.compile(searchResultsTemplateSource);
 
+var shoppingBasketTemplateSource = document.querySelector(".shoppingBasketTemplate").innerHTML;
+var shoppingBasketTemplate = Handlebars.compile(shoppingBasketTemplateSource);
+
+var addToBasketButton = document.querySelector(".addToBasketButton");
+
 searchButton.addEventListener('click', handleSearch);
 addButton.addEventListener('click', handleAdd);
+//addToBasketButton.addEventListener('click', handleAddToBasket)
 
 var shoeCatalogue = ShoeCatalogue();
 
@@ -29,20 +37,22 @@ function handleSearch(){
 
      var filteredShoesObj = shoeCatalogue.filterShoes(brand, color, size);
 
-     showShoesResults(filteredShoesObj, brand, color, size);
+     showShoesResults(filteredShoesObj);
   }
 }
 
-function showShoesResults(filteredShoes, brand, color, size){
+function showShoesResults(filteredShoes){
   if (filteredShoes.length == 1) {
     filteredShoesData = searchResultsTemplate({
       numberInStock : filteredShoes[0].in_stock,
-      brand : brand,
-      color : color,
-      size : size
+      brand : filteredShoes[0].brand,
+      color : filteredShoes[0].color,
+      size : filteredShoes[0].size
     })
 
    shoeResultsDisplayElement.innerHTML = filteredShoesData;
+
+   shoeCatalogue.addSearchResults(filteredShoes[0]);
 
  }else {
    filteredShoesData = searchResultsTemplate({
@@ -71,4 +81,33 @@ function handleAdd() {
 
     }
 
+}
+
+function handleAddToBasket(){
+
+  var shoe = shoeCatalogue.getSearchResults();
+
+  if(shoe !== undefined && shoe!== "" && shoe!=={}){
+
+    shoeCatalogue.addToShoppingBasket(shoe);
+    var shoppingBasket = shoeCatalogue.getShoppingBasket();
+
+    var shoes = shoeCatalogue.getShoes();
+    var updatedShoe = shoes.map(currentShoe => {
+      if(currentShoe.brand == shoe.brand && currentShoe.color == shoe.color && currentShoe.size == shoe.size){
+          currentShoe.in_stock -= 1;
+          return currentShoe;
+      }
+    })
+
+    showShoesResults(updatedShoe);
+
+    showShoppingBasket(shoppingBasket);
+  }
+}
+
+function showShoppingBasket(shoppingBasket){
+  var shoppingBasketData = { shoes: shoppingBasket};
+
+    var shoppingBasketDisplayElem = shoppingBasketTemplate(shoppingBasketData);
 }
