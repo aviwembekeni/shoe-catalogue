@@ -23,7 +23,7 @@ function ShoeCatalogue(){
         { color : 'brown', brand : "lacoste", size: 7, price : 400,  in_stock : 21},
         { color : 'brown', brand : "Lacoste", size: 8, price : 400,  in_stock : 22},
         { color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25},
-        { color : 'white', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31},
+        { color : 'white', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31}
 
       ];
 
@@ -68,7 +68,15 @@ function ShoeCatalogue(){
       }
 
       function addShoeToShoppingBasket(shoe){
-        shoppingBasket.push(shoe);
+        var currentShoes = filterShoesList(shoe.brand, shoe.color, shoe.size);
+        var currentShoe = currentShoes[0];
+        currentShoe.in_stock--;
+
+        shoppingBasket.push(currentShoe);
+        // find the shoe in stock and decrement the counter
+
+
+
 
       }
 

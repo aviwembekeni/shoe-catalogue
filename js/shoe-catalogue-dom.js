@@ -87,22 +87,26 @@ function handleAddToBasket(){
 
   var shoe = shoeCatalogue.getSearchResults();
 
+  shoe.in
+
+  console.log(shoe);
+
   if(shoe !== undefined && shoe!== "" && shoe!=={}){
 
     shoeCatalogue.addToShoppingBasket(shoe);
     var shoppingBasket = shoeCatalogue.getShoppingBasket();
 
     var shoes = shoeCatalogue.getShoes();
-    var updatedShoe = shoes.map(currentShoe => {
+  /*  var updatedShoe = shoes.map((currentShoe, i) => {
       if(currentShoe.brand === shoe.brand && currentShoe.color === shoe.color && currentShoe.size === shoe.size){
 
-         currentShoe["in_stock"] = currentShoe["in_stock"] -1;
+        currentShoe.in_stock -= 1;
 
             console.log(currentShoe);
 
           return currentShoe;
       }
-    })
+    })*/
 
     console.log(updatedShoe);
 
