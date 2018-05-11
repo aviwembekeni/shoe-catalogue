@@ -55,7 +55,6 @@ function ShoeCatalogue(){
         var shoe = { color : color, brand : brand, size: size, price : price,  in_stock : in_stock};
         shoes.push(shoe);
 
-        console.log(shoes);
       }
 
       function addToSearchResults(results){
@@ -68,13 +67,23 @@ function ShoeCatalogue(){
       }
 
       function addShoeToShoppingBasket(shoe){
+        shoppingBasket.push(shoe);
         var currentShoes = filterShoesList(shoe.brand, shoe.color, shoe.size);
         var currentShoe = currentShoes[0];
-        currentShoe.in_stock--;
+        currentShoe.in_stock --;
 
-        shoppingBasket.push(currentShoe);
+        searchResults = currentShoe;
         // find the shoe in stock and decrement the counter
 
+        shoes.map((currentShoeObj, i) => {
+            if(currentShoeObj.brand === currentShoe.brand && currentShoeObj.color === currentShoe.color && currentShoeObj.size === currentShoe.size){
+
+            //  currentShoeObj.in_stock --;
+
+              //    console.log(currentShoe);
+
+            }
+          })
 
 
 
@@ -90,7 +99,7 @@ function ShoeCatalogue(){
     addShoe : addSingleShoe,
     addSearchResults : addToSearchResults,
     getSearchResults : checkSearchResults,
-    addToShoppingBasket : checkShoppingBasket,
+    addToShoppingBasket : addShoeToShoppingBasket,
     getShoppingBasket : checkShoppingBasket
   }
 }
