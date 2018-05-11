@@ -67,7 +67,28 @@ function ShoeCatalogue(){
       }
 
       function addShoeToShoppingBasket(shoe){
-        shoppingBasket.push(shoe);
+        var exist = false;
+
+        if (shoppingBasket.length > 0) {
+
+          shoppingBasket.map(item =>{
+            if (item.brand == shoe.brand && item.color == shoe.color && item.size == shoe.size) {
+                item.stock ++;
+                item.total = item.stock * item.price;
+                exist = true;
+            }
+          })
+
+          if (!exist) {
+            var newShoe = {brand : shoe.brand, color: shoe.color, size: shoe.size, stock: 1, price: shoe.price, total:shoe.price};
+            shoppingBasket.push(newShoe);
+          }
+
+        } else {
+           var newShoe = {brand : shoe.brand, color: shoe.color, size: shoe.size, stock: 1, price: shoe.price, total:shoe.price};
+           shoppingBasket.push(newShoe);
+        }
+
         var currentShoes = filterShoesList(shoe.brand, shoe.color, shoe.size);
         var currentShoe = currentShoes[0];
         currentShoe.in_stock --;
