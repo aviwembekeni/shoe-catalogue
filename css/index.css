@@ -2,10 +2,25 @@ h3 {
   text-align: center;
 }
 
-table {
+#shoppingBasket {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
+    width: 100%;
 }
 
-table, th, td {
-    border: 1px solid black;
+#shoppingBasket td, #shoppingBasket th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#shoppingBasket tr:nth-child(even){background-color: #f2f2f2;}
+
+#shoppingBasket tr:hover {background-color: #ddd;}
+
+#shoppingBasket th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }
