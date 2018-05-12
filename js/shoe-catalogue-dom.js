@@ -119,5 +119,5 @@ function showShoppingBasket(shoppingBasket){
 
   var shoppingBasketData = { shoes: shoppingBasket};
 
-    var shoppingBasketDisplayElem = shoppingBasketTemplate(shoppingBasketData);
+  shoppingBasketDisplayElem.innerHTML = shoppingBasketTemplate(shoppingBasketData);
 }
