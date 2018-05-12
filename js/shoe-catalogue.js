@@ -20,10 +20,10 @@ function ShoeCatalogue(){
         { color : 'black', brand : "Lacoste", size: 7, price : 400,  in_stock : 16},
         { color : 'black', brand : "Lacoste", size: 8, price : 400,  in_stock : 18},
         { color : 'black', brand : "Lacoste", size: 9, price : 410,  in_stock : 20},
-        { color : 'brown', brand : "lacoste", size: 7, price : 400,  in_stock : 21},
+        { color : 'brown', brand : "Lacoste", size: 7, price : 400,  in_stock : 21},
         { color : 'brown', brand : "Lacoste", size: 8, price : 400,  in_stock : 22},
         { color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25},
-        { color : 'white', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31}
+        { color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31}
 
       ];
 
@@ -52,8 +52,19 @@ function ShoeCatalogue(){
       }
 
       function addSingleShoe(brand, color, size, price, in_stock){
-        var shoe = { color : color, brand : brand, size: size, price : price,  in_stock : in_stock};
-        shoes.push(shoe);
+         var shoeExist = false;
+        shoes.map(shoe => {
+          if(shoe.brand == brand && shoe.color == color && shoe.size == size){
+            shoe.in_stock ++;
+            shoeExist = true;
+            return;
+          }
+        })
+
+        if(!shoeExist){
+          var shoe = { color : color, brand : brand, size: size, price : price,  in_stock : in_stock};
+          shoes.push(shoe);
+        }
 
       }
 
@@ -96,7 +107,7 @@ function ShoeCatalogue(){
         searchResults = currentShoe;
         // find the shoe in stock and decrement the counter
 
-        shoes.map((currentShoeObj, i) => {
+      /*  shoes.map((currentShoeObj, i) => {
             if(currentShoeObj.brand === currentShoe.brand && currentShoeObj.color === currentShoe.color && currentShoeObj.size === currentShoe.size){
 
             //  currentShoeObj.in_stock --;
@@ -104,7 +115,7 @@ function ShoeCatalogue(){
               //    console.log(currentShoe);
 
             }
-          })
+          })*/
 
 
 
