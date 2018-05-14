@@ -89,6 +89,7 @@
               </button>
 
             </div>
+            <hr>
             <h4>Add new shoe</h4>
             <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--4-col brandDiv">
@@ -144,8 +145,22 @@
               </div>
               <div class="mdl-cell mdl-cell--6-col addButtonDiv">
                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect addButton" style="background-color:#1AB365; color:white">
-                  Add
+                  Add Shoe
                 </button>
+            </div>
+
+          </div>
+          <div class="mdl-cell mdl-cell--6-col">
+            <div class="successMessageDiv">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <strong>Success!</strong> Shoe successfully added
+            </div>
+
+          </div>
+          <div class="mdl-cell mdl-cell--6-col">
+            <div class="errorMessageDiv">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              <strong>Failure!</strong> Failed to add shoe.
             </div>
 
           </div>

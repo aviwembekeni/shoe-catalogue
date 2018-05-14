@@ -22,6 +22,9 @@ var shoppingBasketTemplate = Handlebars.compile(shoppingBasketTemplateSource);
 var addToBasketButton = document.querySelector(".addToBasketButton");
 var clearShoppingBasketButton = document.querySelector('.clearBtn');
 
+var successMessageDivElem = document.querySelector(".successMessageDiv");
+var errorMessageDivElem = document.querySelector(".errorMessageDiv");
+
 searchButton.addEventListener('click', handleSearch);
 addButton.addEventListener('click', handleAdd);
 addToBasketButton.addEventListener('click', handleAddToBasket);
@@ -79,12 +82,27 @@ function handleAdd() {
     var size = sizeSelect.value;
     var price = priceSelect.value;
     var in_stock = stockSelect.value;
+    var shoes = shoeCatalogue.getShoes();
 
     if (brand !== "" && color !== "" && size !== "" && price !== "" && in_stock !== "") {
 
        shoeCatalogue.addShoe(brand, color, size, price, in_stock);
 
+       var updatedShoes = shoeCatalogue.getShoes();
+
+       if(shoes !== updatedShoes){
+         successMessageDivElem.style.display = "inline-block";
+       }else{
+         errorMessageDivElem.style.display = "inline-block";
+       }
+
     }
+
+    brandSelect.value = "";
+    colorSelect.value = "";
+    sizeSelect.value = "";
+    priceSelect.value = "";
+    stockSelect.value = "";
 
 }
 
@@ -98,16 +116,6 @@ function handleAddToBasket(){
     var shoppingBasket = shoeCatalogue.getShoppingBasket();
 
     var shoes = shoeCatalogue.getShoes();
-  /*  var updatedShoe = shoes.map((currentShoe, i) => {
-      if(currentShoe.brand === shoe.brand && currentShoe.color === shoe.color && currentShoe.size === shoe.size){
-
-        currentShoe.in_stock -= 1;
-
-            console.log(currentShoe);
-
-          return currentShoe;
-      }
-    })*/
 
     var updatedShoe = shoeCatalogue.getSearchResults();
 
