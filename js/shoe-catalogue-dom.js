@@ -42,7 +42,9 @@ function handleSearch(){
 
      var filteredShoesObj = shoeCatalogue.filterShoes(brand, color, size);
 
-      var filtShoes = filteredShoesObj.length ==1? filteredShoesObj[0] : {}
+      var filtShoes = filteredShoesObj.length ==1? filteredShoesObj[0] : {};
+
+      shoeCatalogue.addSearchResults(filtShoes);
 
      showShoesResults(filtShoes, brand, color, size);
   }
@@ -59,8 +61,6 @@ function showShoesResults(filteredShoes, brand, color, size){
     })
 
    shoeResultsDisplayElement.innerHTML = filteredShoesData;
-
-   shoeCatalogue.addSearchResults(filteredShoes);
 
  }else {
    filteredShoesData = searchResultsTemplate({
@@ -110,7 +110,7 @@ function handleAddToBasket(){
 
   var shoe = shoeCatalogue.getSearchResults();
 
-  if(shoe !== undefined && shoe!== "" && shoe!=={}){
+  if(Object.keys(shoe).length !== 0){
 
     shoeCatalogue.addToShoppingBasket(shoe);
     var shoppingBasket = shoeCatalogue.getShoppingBasket();

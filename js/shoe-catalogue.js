@@ -76,12 +76,13 @@ function ShoeCatalogue(){
       }
 
       function checkSearchResults(){
-        return searchResults
+        return searchResults;
       }
 
       function addShoeToShoppingBasket(shoe){
         var exist = false;
 
+      if(shoe.in_stock > 0){
         if (shoppingBasket.length > 0) {
 
           shoppingBasket.map(item =>{
@@ -126,6 +127,10 @@ function ShoeCatalogue(){
 
             }
           })*/
+
+        }else{
+          searchResults = shoe;
+        }
 
 
 
