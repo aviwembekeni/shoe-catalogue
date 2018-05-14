@@ -151,7 +151,12 @@ function ShoeCatalogue(){
           }
         }
 
-        shoppingBasket = []
+        shoppingBasket = [];
+        shoppingBasketTotal = 0;
+
+        var newSearchResults = filterShoesList(searchResults.brand, searchResults.color, searchResults.size);
+
+        searchResults = newSearchResults[0];
       }
 
   return {

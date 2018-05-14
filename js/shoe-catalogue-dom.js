@@ -20,10 +20,12 @@ var shoppingBasketTemplateSource = document.querySelector(".shoppingBasketTempla
 var shoppingBasketTemplate = Handlebars.compile(shoppingBasketTemplateSource);
 
 var addToBasketButton = document.querySelector(".addToBasketButton");
+var clearShoppingBasketButton = document.querySelector('.clearBtn');
 
 searchButton.addEventListener('click', handleSearch);
 addButton.addEventListener('click', handleAdd);
-addToBasketButton.addEventListener('click', handleAddToBasket)
+addToBasketButton.addEventListener('click', handleAddToBasket);
+clearShoppingBasketButton.addEventListener('click', handleClearBasket);
 
 var shoeCatalogue = ShoeCatalogue();
 
@@ -113,6 +115,16 @@ function handleAddToBasket(){
 
     showShoppingBasket(shoppingBasket);
   }
+}
+
+function handleClearBasket(){
+  shoeCatalogue.clearShoppingBasket();
+
+  var updatedShoe = shoeCatalogue.getSearchResults();
+
+  showShoesResults(updatedShoe, updatedShoe.brand, updatedShoe.color, updatedShoe.size);
+
+  showShoppingBasket(shoeCatalogue.getShoppingBasket);
 }
 
 function showShoppingBasket(shoppingBasket){
