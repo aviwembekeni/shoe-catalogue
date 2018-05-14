@@ -139,6 +139,21 @@ function ShoeCatalogue(){
         return shoppingBasketTotal;
       }
 
+      function clearShoppingBasketList(){
+
+        for (var i = 0; i < shoppingBasket.length; i++) {
+          for (var j = 0; j < shoes.length; j++) {
+            if (shoppingBasket[i].brand == shoes[j].brand &&
+                shoppingBasket[i].color == shoes[j].color &&
+                shoppingBasket[i].size == shoes[j].size) {
+                  shoes[j].in_stock += shoppingBasket[i].stock;
+            }
+          }
+        }
+
+        shoppingBasket = []
+      }
+
   return {
     getShoes : checkShoes,
     filterShoes : filterShoesList,
@@ -147,6 +162,7 @@ function ShoeCatalogue(){
     getSearchResults : checkSearchResults,
     addToShoppingBasket : addShoeToShoppingBasket,
     getShoppingBasket : checkShoppingBasket,
-    getShoppingBasketTotatl : checkShoppingBasketTotal
+    getShoppingBasketTotatl : checkShoppingBasketTotal,
+    clearShoppingBasket : clearShoppingBasketList
   }
 }

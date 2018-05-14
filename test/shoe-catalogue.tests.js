@@ -269,3 +269,30 @@ describe('addShoeToShoppingBasket', function() {
     });
 
 });
+
+describe('clearShoppingBasket', function() {
+
+    it('should return an empty shopping basket.', function() {
+      var shoeCatalogue = ShoeCatalogue();
+
+      shoeCatalogue.addToShoppingBasket({ color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31});
+      shoeCatalogue.addToShoppingBasket({ color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25});
+
+      shoeCatalogue.clearShoppingBasket();
+
+      assert.deepEqual([], shoeCatalogue.getShoppingBasket());
+    });
+
+    it('should return original shoes data set before items were added to the basket.', function() {
+      var shoeCatalogue = ShoeCatalogue();
+
+      shoeCatalogue.addToShoppingBasket({ color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31});
+      shoeCatalogue.addToShoppingBasket({ color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25});
+
+      shoeCatalogue.clearShoppingBasket();
+
+      assert.deepEqual(shoes, shoeCatalogue.getShoes());
+    });
+
+
+});
