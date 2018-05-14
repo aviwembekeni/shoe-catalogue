@@ -224,7 +224,7 @@ describe('addShoeToShoppingBasket', function() {
 
           ];
 
-          var shoe = {brand: "Tommy Helfiger", color: 'black', price: 440, size: 9, stock: 1, total:440 };
+          var shoe = { color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31};
 
           shoeCatalogue.addToShoppingBasket(shoe);
 
