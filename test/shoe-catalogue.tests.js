@@ -256,5 +256,16 @@ describe('addShoeToShoppingBasket', function() {
           assert.deepEqual(shoesList, shoeCatalogue.getShoppingBasket());
     });
 
+    it("should return shopping basket total.", function() {
+      var shoeCatalogue = ShoeCatalogue();
+
+          var shoe1 = {brand: "Tommy Helfiger", color: 'black', price: 440, size: 9, stock: 1, total:440 };
+          var shoe2 = {brand: "Lacoste", color: 'brown', price: 410, size: 9, stock: 1, total:410 };
+
+          shoeCatalogue.addToShoppingBasket({ color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31});
+          shoeCatalogue.addToShoppingBasket({ color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25});
+
+          assert.deepEqual(shoe1.total + shoe2.total, shoeCatalogue.getShoppingBasketTotatl());
+    });
 
 });

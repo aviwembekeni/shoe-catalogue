@@ -117,7 +117,7 @@ function handleAddToBasket(){
 
 function showShoppingBasket(shoppingBasket){
 
-  var shoppingBasketData = { shoes: shoppingBasket};
+  var shoppingBasketData = { shoes: shoppingBasket, totalAmount: shoeCatalogue.getShoppingBasketTotatl()};
 
   shoppingBasketDisplayElem.innerHTML = shoppingBasketTemplate(shoppingBasketData);
 }

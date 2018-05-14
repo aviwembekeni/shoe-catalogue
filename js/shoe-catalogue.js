@@ -31,6 +31,8 @@ function ShoeCatalogue(){
 
       var shoppingBasket = [];
 
+      var shoppingBasketTotal = 0;
+
       function checkShoes(){
         var shoesCopy = [];
 
@@ -105,6 +107,14 @@ function ShoeCatalogue(){
         currentShoe.in_stock --;
 
         searchResults = currentShoe;
+
+        var shoppingBasketTotalAmount = 0;
+
+        for (var i = 0; i < shoppingBasket.length; i++) {
+          shoppingBasketTotalAmount +=  shoppingBasket[i].total;
+        }
+
+        shoppingBasketTotal = shoppingBasketTotalAmount;
         // find the shoe in stock and decrement the counter
 
       /*  shoes.map((currentShoeObj, i) => {
@@ -125,6 +135,10 @@ function ShoeCatalogue(){
         return shoppingBasket
       }
 
+      function checkShoppingBasketTotal(){
+        return shoppingBasketTotal;
+      }
+
   return {
     getShoes : checkShoes,
     filterShoes : filterShoesList,
@@ -132,6 +146,7 @@ function ShoeCatalogue(){
     addSearchResults : addToSearchResults,
     getSearchResults : checkSearchResults,
     addToShoppingBasket : addShoeToShoppingBasket,
-    getShoppingBasket : checkShoppingBasket
+    getShoppingBasket : checkShoppingBasket,
+    getShoppingBasketTotatl : checkShoppingBasketTotal
   }
 }
