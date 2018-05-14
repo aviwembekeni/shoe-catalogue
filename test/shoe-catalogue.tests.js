@@ -64,7 +64,7 @@ describe('addSingleShoe', function() {
     it('should add a shoe to the stock.', function() {
       var shoeCatalogue = ShoeCatalogue();
 
-      var shoes = [
+      var shoesWithAddedShoe = [
             { color : 'brown', brand : "Prada", size: 7, price : 350,  in_stock : 5},
             { color : 'brown', brand : "Prada", size: 9, price : 490,  in_stock : 6},
             { color : 'black', brand : "Tommy Helfiger", size: 7, price : 430,  in_stock : 7},
@@ -95,7 +95,7 @@ describe('addSingleShoe', function() {
 
           shoeCatalogue.addShoe("Prada", 'white', 9, 440, 31);
 
-          assert.deepEqual(shoes, shoeCatalogue.getShoes());
+          assert.deepEqual(shoesWithAddedShoe, shoeCatalogue.getShoes());
     });
 
     it('should increment in_stock value by one if shoe already exists.', function() {
