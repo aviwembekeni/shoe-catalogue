@@ -1,33 +1,33 @@
 function ShoeCatalogue(){
   var shoes = [
-        { color : 'brown', brand : "Prada", size: 7, price : 350,  in_stock : 5},
-        { color : 'brown', brand : "Prada", size: 9, price : 490,  in_stock : 6},
-        { color : 'black', brand : "Tommy Helfiger", size: 7, price : 430,  in_stock : 7},
-        { color : 'black', brand : "Tommy Helfiger", size: 8, price : 439,  in_stock : 2},
-        { color : 'brown', brand : "Tommy Helfiger", size: 7, price : 450,  in_stock : 10},
-        { color : 'brown', brand : "Tommy Helfiger", size: 8, price : 350,  in_stock : 11},
-        { color : 'white', brand : "Tommy Helfiger", size: 8, price : 410,  in_stock : 15},
-        { color : 'white', brand : "Tommy Helfiger", size: 9, price : 350,  in_stock : 21},
-        { color : 'black', brand : "Kurt Geiger", size: 7, price : 400,  in_stock : 7},
-        { color : 'black', brand : "Kurt Geiger", size: 8, price : 410,  in_stock : 9},
-        { color : 'black', brand : "Kurt Geiger", size: 9, price : 415,  in_stock : 4},
-        { color : 'brown', brand : "Kurt Geiger", size: 7, price : 410,  in_stock : 3},
-        { color : 'brown', brand : "Kurt Geiger", size: 8, price : 420,  in_stock : 13},
-        { color : 'brown', brand : "Kurt Geiger", size: 9, price : 430,  in_stock : 12},
-        { color : 'white', brand : "Lacoste", size: 7, price : 400,  in_stock : 14},
-        { color : 'white', brand : "Lacoste", size: 8, price : 410,  in_stock : 17},
-        { color : 'white', brand : "Lacoste", size: 9, price : 440,  in_stock : 19},
-        { color : 'black', brand : "Lacoste", size: 7, price : 400,  in_stock : 16},
-        { color : 'black', brand : "Lacoste", size: 8, price : 400,  in_stock : 18},
-        { color : 'black', brand : "Lacoste", size: 9, price : 410,  in_stock : 20},
-        { color : 'brown', brand : "Lacoste", size: 7, price : 400,  in_stock : 21},
-        { color : 'brown', brand : "Lacoste", size: 8, price : 400,  in_stock : 22},
-        { color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25},
-        { color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31}
+        {id : 0, color : 'brown', brand : "Prada", size: 7, price : 350,  in_stock : 5},
+        {id : 1, color : 'brown', brand : "Prada", size: 9, price : 490,  in_stock : 6},
+        {id : 2, color: 'black', brand : "Tommy Helfiger", size: 7, price : 430,  in_stock : 7},
+        {id : 3, color : 'black', brand : "Tommy Helfiger", size: 8, price : 439,  in_stock : 2},
+        {id : 4, color : 'brown', brand : "Tommy Helfiger", size: 7, price : 450,  in_stock : 10},
+        {id : 5, color : 'brown', brand : "Tommy Helfiger", size: 8, price : 350,  in_stock : 11},
+        {id : 6, color : 'white', brand : "Tommy Helfiger", size: 8, price : 410,  in_stock : 15},
+        {id : 7, color : 'white', brand : "Tommy Helfiger", size: 9, price : 350,  in_stock : 21},
+        {id : 8, color : 'black', brand : "Kurt Geiger", size: 7, price : 400,  in_stock : 7},
+        {id : 9, color : 'black', brand : "Kurt Geiger", size: 8, price : 410,  in_stock : 9},
+        {id : 10, color : 'black', brand : "Kurt Geiger", size: 9, price : 415,  in_stock : 4},
+        {id : 11, color : 'brown', brand : "Kurt Geiger", size: 7, price : 410,  in_stock : 3},
+        {id : 12, color : 'brown', brand : "Kurt Geiger", size: 8, price : 420,  in_stock : 13},
+        {id : 13, color : 'brown', brand : "Kurt Geiger", size: 9, price : 430,  in_stock : 12},
+        {id : 14, color : 'white', brand : "Lacoste", size: 7, price : 400,  in_stock : 14},
+        {id : 15, color : 'white', brand : "Lacoste", size: 8, price : 410,  in_stock : 17},
+        {id : 16, color : 'white', brand : "Lacoste", size: 9, price : 440,  in_stock : 19},
+        {id : 17, color : 'black', brand : "Lacoste", size: 7, price : 400,  in_stock : 16},
+        {id : 18, color : 'black', brand : "Lacoste", size: 8, price : 400,  in_stock : 18},
+        {id : 19, color : 'black', brand : "Lacoste", size: 9, price : 410,  in_stock : 20},
+        {id : 20, color : 'brown', brand : "Lacoste", size: 7, price : 400,  in_stock : 21},
+        {id : 21, color : 'brown', brand : "Lacoste", size: 8, price : 400,  in_stock : 22},
+        {id : 22, color : 'brown', brand : "Lacoste", size: 9, price : 410,  in_stock : 25},
+        {id : 23, color : 'black', brand : "Tommy Helfiger", size: 9, price : 440,  in_stock : 31}
 
       ];
 
-      var searchResults = {};
+      var searchResults = [];
 
       var shoppingBasket = [];
 
@@ -64,8 +64,9 @@ function ShoeCatalogue(){
         })
 
         if(!shoeExist){
-          var shoe = { color : color, brand : brand, size: size, price : price,  in_stock : in_stock};
+          var shoe = {id : shoes.length+1, color : color, brand : brand, size: size, price : price,  in_stock : in_stock};
           shoes.push(shoe);
+
         }
 
       }
@@ -79,8 +80,18 @@ function ShoeCatalogue(){
         return searchResults;
       }
 
-      function addShoeToShoppingBasket(shoe){
+      function filterById(id){
+        return shoes.filter(function (shoe) {
+          return shoe.id == id;
+        });
+      }
+
+      function addShoeToShoppingBasket(id){
         var exist = false;
+
+        var shoes = filterById(id);
+
+        var shoe = shoes[0];
 
       if(shoe.in_stock > 0){
         if (shoppingBasket.length > 0) {
@@ -107,8 +118,6 @@ function ShoeCatalogue(){
         var currentShoe = currentShoes[0];
         currentShoe.in_stock --;
 
-        searchResults = currentShoe;
-
         var shoppingBasketTotalAmount = 0;
 
         for (var i = 0; i < shoppingBasket.length; i++) {
@@ -129,7 +138,7 @@ function ShoeCatalogue(){
           })*/
 
         }else{
-          searchResults = shoe;
+
         }
 
 
@@ -156,12 +165,24 @@ function ShoeCatalogue(){
           }
         }
 
+        var newSearchResults = [];
+
+        searchResults.map(shoeResult => {
+          var items = filterById(shoeResult.id);
+          var item = items[0];
+          newSearchResults.push(item);
+        })
+
+        searchResults = newSearchResults;
+
         shoppingBasket = [];
         shoppingBasketTotal = 0;
 
-        var newSearchResults = filterShoesList(searchResults.brand, searchResults.color, searchResults.size);
 
-        searchResults = newSearchResults[0];
+      }
+
+      function filterByAny(searchParams){
+          return _.filter(shoes, searchParams);
       }
 
   return {
@@ -173,6 +194,7 @@ function ShoeCatalogue(){
     addToShoppingBasket : addShoeToShoppingBasket,
     getShoppingBasket : checkShoppingBasket,
     getShoppingBasketTotatl : checkShoppingBasketTotal,
-    clearShoppingBasket : clearShoppingBasketList
+    clearShoppingBasket : clearShoppingBasketList,
+    filterShoesByAny : filterByAny
   }
 }

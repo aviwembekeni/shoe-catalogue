@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.core.js"></script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script type="text/x-template" class="searchResultsTemplate">
-        <span> We have <b>{{numberInStock}}</b> size <b>{{size}} {{color}}  {{brand}}</b> shoes available</span>
+      {{#each shoes}}
+        <p> We have <b>{{in_stock}}</b> size <b>{{size}} {{color}}  {{brand}}</b> shoes available <button class="" onclick="addToBasket({{id}})">Add to basket</button></p>
 
+      {{/each}}
   </script>
   <script type="text/x-template" class="shoppingBasketTemplate">
     {{#each shoes}}
@@ -22,8 +25,9 @@
         <td>{{stock}}</td>
         <td>R{{price}}</td>
         <td>R{{total}}</td>
-    {{/each}}
       </tr>
+    {{/each}}
+
       <h5>Total : R{{totalAmount}}</h5>
 </script>
   </head>
@@ -83,10 +87,6 @@
               <div class="mdl-cell mdl-cell--12-col shoeResultsDisplay">
 
               </div>
-
-              <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect addToBasketButton" style="background-color:#1AB365; color:white">
-                Add To Basket
-              </button>
 
             </div>
             <hr>
