@@ -195,6 +195,7 @@ function ShoeCatalogue(){
     getShoppingBasket : checkShoppingBasket,
     getShoppingBasketTotatl : checkShoppingBasketTotal,
     clearShoppingBasket : clearShoppingBasketList,
-    filterShoesByAny : filterByAny
+    filterShoesByAny : filterByAny,
+    filterShoesById : filterById
   }
 }
